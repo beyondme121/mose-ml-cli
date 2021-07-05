@@ -1,18 +1,21 @@
 ## lerna 使用
 
-### 初始化lerna管理包的项目
+### 初始化 lerna 管理包的项目
+
 ```
 lerna init
 ```
-- 会创建packages目录
-- git管理
-- 创建lerna.json
+
+- 会创建 packages 目录
+- git 管理
+- 创建 lerna.json
 
 ### 直接创建自定义的包
-- `lerna create @mose-ml-cli/core packages` => 在packages目录下,创建group组名为mose-ml-cli的名称为core的包
 
+- `lerna create @mose-ml-cli/core packages` => 在 packages 目录下,创建 group 组名为 mose-ml-cli 的名称为 core 的包
 
 ### 安装依赖
+
 - 会为 packages 下的每个包安装 axios
 
 ```
@@ -58,6 +61,7 @@ lerna WARN No packages found where axios can be added.
 ```
 
 - 针对某个包安装依赖
+
 ```
 lerna add mocha packages/core -D
 ```
@@ -74,20 +78,102 @@ lerna add mocha packages/core -D
   ```json
       "main": "lib/utils.js",
   ```
-- 手动在core的package.json中增加依赖
-    ```json
-    "dependencies": {
-        "@mose-ml-cli/utils": "^1.0.0"
-    }
-    ```
+- 手动在 core 的 package.json 中增加依赖
+  ```json
+  "dependencies": {
+      "@mose-ml-cli/utils": "^1.0.0"
+  }
+  ```
 
-> lerna add **安装的依赖是已经发布的包**
-> **lerna link是连接项目中使用的包**，对于已经上线的包通过add 安装后就不需要使用link安装了。
+> lerna add **安装的依赖是已经发布的包** > **lerna link 是连接项目中使用的包**，对于已经上线的包通过 add 安装后就不需要使用 link 安装了。
 
 ```
 cd \@mose-ml-cli/
 bogon:@mose-ml-cli sanfeng$ ls -l
 total 0
 lrwxr-xr-x  1 sanfeng  staff  14  7  3 22:08 utils -> ../../../utils
+```
+
+
+
+### lerna exec 
+
+**--scope: 指定哪个包的范围, **
+
+**@mose-ml-cli/core 是某个包中package.json中name属性**
+
+
+
+
+
+```
+lerna exec --scope @mose-ml-cli/core -- rm -rf node_modules
+```
+
+
+
+### lerna run 执行npm中script中的命令
+
+```
+lerna run test  # 执行所有包的npm test的命令
+lerna run test @mose-ml-cli/core  # 执行指定包的
+```
+
+package.json中的配置
+
+```json
+"scripts": {
+    "test": "echo \"Error: run tests from core\""
+},
+```
+
+
+
+### lerna发布上线
+
+1. **lerna version**
+
+- 每次发布上线，都希望package.json中的version都需要增加一位 1.0.1
+
+```
+ 通过使用lerna version 增加版本号
+ 需要将代码提交
+```
+
+
+
+2. **lerna changed**
+
+和上个版本相比有哪些版本发生了变更
+
+```
+lerna changed
+lerna notice cli v4.0.0
+lerna info Assuming all packages changed
+@mose-ml-cli/core
+@mose-ml-cli/utils
+lerna success found 2 packages ready to publish
+```
+
+3. lerna diff
+
+```
+λ lerna diff
+lerna notice cli v4.0.0
+diff --git a/packages/core/package.json b/packages/core/package.json
+index ca9808b..01b2e6d 100644
+--- a/packages/core/package.json
++++ b/packages/core/package.json
+@@ -17,7 +17,7 @@
+     "registry": "https://registry.npm.taobao.org"
+   },
+   "scripts": {
+-    "test": "echo \"Error: run tests from root\" && exit 1"
++    "test": "echo \"Error: run tests from core\""
+   },
+   "dependencies": {
+     "@mose-ml-cli/utils": "^1.0.0",
+diff --git a/packages/utils/package.json b/packages/utils/package.json
+index 1e1d488..fc61628 100644
 ```
 
