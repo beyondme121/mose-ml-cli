@@ -6,6 +6,9 @@
   "homepage": "",
   "license": "ISC",
   "main": "lib/core.js",
+  "bin": {
+    "mose-ml-cli": "bin/index.js"
+  },
   "directories": {
     "lib": "lib",
     "test": "__tests__"
@@ -22,8 +25,7 @@
   },
   "dependencies": {
     "@mose-ml-cli/utils": "^1.0.1",
-    "axios": "^0.21.1",
-    "undefined": "C:\\project\\muke-project\\mose-ml-cli"
+    "axios": "^0.21.1"
   },
   "devDependencies": {
     "mocha": "^9.0.2"

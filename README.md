@@ -208,3 +208,22 @@ npm config set register https://registry.npmjs.org/
 },
 ```
 
+6. npm上, 组group是私有的属性，需要配置位公开的 
+
+package.json
+
+```json
+"publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
+},
+```
+
+7. 配置一下脚手架的命令，在某个包下的 package.json 
+
+```
+"bin": {
+	"mose-ml-cli": "bin/index.js"
+},
+```
+
