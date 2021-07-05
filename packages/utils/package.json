@@ -1,6 +1,6 @@
 {
   "name": "@mose-ml-cli/utils",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "> TODO: description",
   "author": "beyondme121 <beyondme121@163.com>",
   "homepage": "",
@@ -19,6 +19,5 @@
   },
   "scripts": {
     "test": "echo \"Error: run tests from utils\""
-  },
-  "dependencies": {}
+  }
 }
