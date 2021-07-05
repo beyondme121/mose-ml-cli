@@ -1,6 +1,6 @@
 {
   "name": "@mose-ml-cli/core",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "> TODO: description",
   "author": "beyondme121 <beyondme121@163.com>",
   "homepage": "",
@@ -21,7 +21,7 @@
     "test": "echo \"Error: run tests from core\""
   },
   "dependencies": {
-    "@mose-ml-cli/utils": "^1.0.0",
+    "@mose-ml-cli/utils": "^1.0.1",
     "axios": "^0.21.1",
     "undefined": "C:\\project\\muke-project\\mose-ml-cli"
   },
