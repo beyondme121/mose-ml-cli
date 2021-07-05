@@ -21,7 +21,8 @@
   },
   "dependencies": {
     "@mose-ml-cli/utils": "^1.0.0",
-    "axios": "^0.21.1"
+    "axios": "^0.21.1",
+    "undefined": "C:\\project\\muke-project\\mose-ml-cli"
   },
   "devDependencies": {
     "mocha": "^9.0.2"

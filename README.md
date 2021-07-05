@@ -138,7 +138,22 @@ package.json中的配置
 ```
  通过使用lerna version 增加版本号
  需要将代码提交
+λ lerna version
+lerna notice cli v4.0.0
+lerna info current version 1.0.0
+lerna info Assuming all packages changed
+? Select a new version (currently 1.0.0) (Use arrow keys)
+> Patch (1.0.1)
+  Minor (1.1.0)
+  Major (2.0.0)
+  Prepatch (1.0.1-alpha.0)
+  Preminor (1.1.0-alpha.0)
+  Premajor (2.0.0-alpha.0)
+  Custom Prerelease
+  Custom Version
 ```
+
+因为1.0.0还没有创建，暂时先不创建1.0.1这个版本
 
 
 
@@ -176,4 +191,6 @@ index ca9808b..01b2e6d 100644
 diff --git a/packages/utils/package.json b/packages/utils/package.json
 index 1e1d488..fc61628 100644
 ```
+
+
 
