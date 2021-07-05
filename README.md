@@ -131,6 +131,8 @@ package.json中的配置
 
 ### lerna发布上线
 
+**总结: 先commit，然后检查升级版本号 lerna version, 更新代码到github上， 登录npm，最后lerna publish， **
+
 1. **lerna version**
 
 - 每次发布上线，都希望package.json中的version都需要增加一位 1.0.1
@@ -170,7 +172,7 @@ lerna info Assuming all packages changed
 lerna success found 2 packages ready to publish
 ```
 
-3. lerna diff
+3. **lerna diff**
 
 ```
 λ lerna diff
@@ -192,5 +194,17 @@ diff --git a/packages/utils/package.json b/packages/utils/package.json
 index 1e1d488..fc61628 100644
 ```
 
+4. **如果npm配置了淘宝源,就行修改即可**
 
+```
+npm config set register https://registry.npmjs.org/
+```
+
+5. **修改每个包的package.json中的config**
+
+```
+"publishConfig": {
+	"registry": "https://registry.npmjs.org"
+},
+```
 
